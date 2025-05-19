@@ -1,0 +1,52 @@
+# GPA Calculator for Ayo's 6 Courses
+
+# Grade to Grade Point mapping
+grade_points = {
+    'A': 5,
+    'B': 4,
+    'C': 3,
+    'D': 2,
+    'E': 1,
+    'F': 0
+}
+
+# Course details: (Course Code, Course Unit)
+courses = [
+    ("EIE322: Signals and Systems", 2),
+    ("EIE323: Analogue Electronics", 3),
+    ("EIE326: Software Development Techniques", 3),
+    ("EIE327: Digital Electronics", 3),
+    ("GEC320: Numerical Methods", 3),
+    ("GEC324: Technical/Engineering Communication", 2)
+]
+
+# Initialize total quality points and total course units
+total_quality_points = 0
+total_course_units = 0
+
+# Loop through each course
+for course_name, course_unit in courses:
+    print(f"\nEnter grade for {course_name} (Unit: {course_unit})")
+    
+    # Get course grade
+    while True:
+        grade = input("Grade (A-F): ").upper()
+        if grade in grade_points:
+            break
+        else:
+            print("Invalid grade. Enter a letter grade between A and F.")
+
+    # Compute quality points for this course
+    quality_points = grade_points[grade] * course_unit
+
+    # Add to totals
+    total_quality_points += quality_points
+    total_course_units += course_unit
+
+# Calculate GPA
+gpa = total_quality_points / total_course_units
+
+# Display result
+print(f"\nYour GPA for these 6 courses is: {gpa:.2f}")
+
+...
